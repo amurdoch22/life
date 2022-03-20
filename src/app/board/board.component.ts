@@ -15,6 +15,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
   private height = 0;
   private width = 0;
 
+  public startTime = 10;
+
   private context?: CanvasRenderingContext2D;
 
   // VARIABLE: We store the DPI to adjust the Canvas, so it doesn't look blurry
@@ -33,13 +35,11 @@ export class BoardComponent implements OnInit, AfterViewInit {
       this.drawBoard();
       this.updateBoard();
 
-      setTimeout(() => {
-        setInterval(() => {
-          this.clearBoard();
-          this.reduceBoard();
-          this.updateBoard();
-        }, 125)
-      }, 10000);
+      setInterval(() => {
+        this.clearBoard();
+        this.reduceBoard();
+        this.updateBoard();
+      }, 125)
     }
   }
 
