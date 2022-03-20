@@ -1,0 +1,9 @@
+.playBoard {
+  display: block;
+  position: absolute;
+
+  inset: 4rem;
+/*  margin-top: 6rem;*/
+  width: calc(100% - 8rem);
+  height:  calc(100% - 8rem);
+}

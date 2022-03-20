@@ -1,0 +1,13 @@
+html,
+body {
+  font-size: 62.7%;
+  overflow: hidden;
+  background: black;
+}
+
+h3 {
+  font-size: 4em;
+  color: white;
+  margin-top: -1rem;
+  margin-left: 3rem;
+}

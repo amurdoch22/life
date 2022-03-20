@@ -1,0 +1,6 @@
+<div class="bar">
+  <div class="buttonArea">
+    <button (click)="reset.emit(true)">Reset</button>
+    <button (click)="pause.emit(true)" *ngIf="pause">Pause</button>
+  </div>
+</div>
