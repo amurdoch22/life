@@ -5,7 +5,7 @@ import { AppModule } from './app/app.module';
 enableProdMode();
 
 const disableErr = false;
-const disableLog = true;
+const disableLog = false;
 const disableTime = true;
 
 if (window && disableLog) {

@@ -15,8 +15,6 @@ export class BoardComponent implements OnInit, AfterViewInit {
   private height = 0;
   private width = 0;
 
-  public startTime = 10;
-
   private context?: CanvasRenderingContext2D;
 
   // VARIABLE: We store the DPI to adjust the Canvas, so it doesn't look blurry
@@ -49,12 +47,11 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
     if (context) {
       context.clearRect(0, 0, canvas.width, canvas.height);
-    } else {
-      console.log('WHY?')
     }
   }
 
   ngOnInit(): void {
+    console.clear();
   }
 
   fixDPI() {
@@ -73,8 +70,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
   drawBoard() {
     this.fixDPI();
 
-    const canvasHeight = this.canvas.nativeElement.height; // 3
-    const canvasWidth = this.canvas.nativeElement.width; // 1.5
+    const canvasHeight = this.canvas.nativeElement.height;
+    const canvasWidth = this.canvas.nativeElement.width;
 
     let scale;
     if (canvasWidth > canvasHeight) {
@@ -83,8 +80,9 @@ export class BoardComponent implements OnInit, AfterViewInit {
       scale = canvasHeight / canvasWidth;
     }
 
-    this.height = canvasHeight / 50;
-    this.width = canvasWidth / (scale * 50);
+    // NOTE: Controls the size of the board
+    this.height = canvasHeight / 125;
+    this.width = canvasWidth / (scale * 125);
 
     this.clearBoard();
 
@@ -92,13 +90,12 @@ export class BoardComponent implements OnInit, AfterViewInit {
     for (let y = 0; y < canvasWidth / this.width; y++) {
       const row: number[] = [];
       for (let x = 0; x < canvasHeight / this.height; x++){
-        // Math.floor(Math.random() * 2)
         row.push(0)
       }
       this.boardSurface.push(row);
     }
 
-    const liveCompute = Math.floor(Math.random() * 750);
+    const liveCompute = Math.floor(Math.random() * 3500);
 
     _.times(liveCompute, () => {
       const rows = this.boardSurface.length;
@@ -251,10 +248,6 @@ export class BoardComponent implements OnInit, AfterViewInit {
           // NOTE: with the colour specified by the fillStyle attribute
           this.context.fillRect(x, y, w, h);
 
-          this.context.stroke();
-        } else {
-          this.context.strokeStyle = 'lightgrey';
-          this.context.strokeRect(x, y, w, h);
           this.context.stroke();
         }
       }
